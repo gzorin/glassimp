@@ -1,0 +1,4 @@
+.gitignore
+autom4te.cache
+build
+*~
