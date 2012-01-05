@@ -764,7 +764,10 @@ CPP
 CXXCPP
 PKG_CONFIG
 PKG_CONFIG_PATH
-PKG_CONFIG_LIBDIR'
+PKG_CONFIG_LIBDIR
+assimp_CPPFLAGS
+assimp_LDFLAGS
+assimp_LIBS'
 
 
 # Initialize some variables set by options.
@@ -1420,6 +1423,11 @@ Some influential environment variables:
               directories to add to pkg-config's search path
   PKG_CONFIG_LIBDIR
               path overriding pkg-config's built-in search path
+  assimp_CPPFLAGS
+              C preprocessor flags for assimp, overriding pkg-config
+  assimp_LDFLAGS
+              linker flags for assimp, overriding pkg-config
+  assimp_LIBS library flags for assimp, overriding pkg-config
 
 Use these variables to override the choices made by `configure' or to help
 it to find libraries and programs with nonstandard names/locations.
@@ -15463,16 +15471,120 @@ ac_config_commands="$ac_config_commands $ax_create_pkgconfig_generate"
 
 
 # Look for the assimp library itself:
-if ! `${PKG_CONFIG} --exists assimp`; then
-as_fn_error $? "cannot find assimp library in PKG_CONFIG_PATH" "$LINENO" 5
+
+
+
+pkg_failed=no
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for assimp" >&5
+$as_echo_n "checking for assimp... " >&6; }
+
+if test -n "$assimp_CPPFLAGS"; then
+    pkg_cv_assimp_CPPFLAGS="$assimp_CPPFLAGS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"assimp\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "assimp") 2>&5
+  ac_status=$?
+  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_assimp_CPPFLAGS=`$PKG_CONFIG --cflags "assimp" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+if test -n "$assimp_LDFLAGS"; then
+    pkg_cv_assimp_LDFLAGS="$assimp_LDFLAGS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"assimp\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "assimp") 2>&5
+  ac_status=$?
+  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_assimp_LDFLAGS=`$PKG_CONFIG --libs-only-L "assimp" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+if test -n "$assimp_LIBS"; then
+    pkg_cv_assimp_LIBS="$assimp_LIBS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"assimp\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "assimp") 2>&5
+  ac_status=$?
+  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_assimp_LIBS=`$PKG_CONFIG --libs-only-l "assimp" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
 fi
 
-assimp_CPPFLAGS=`pkg-config --cflags assimp`
-assimp_LDFLAGS=`pkg-config --libs-only-L assimp`
-assimp_LIBS=`pkg-config --libs-only-l assimp`
+
+
+if test $pkg_failed = yes; then
+   	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
+else
+        _pkg_short_errors_supported=no
+fi
+        if test $_pkg_short_errors_supported = yes; then
+	        assimp_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "assimp" 2>&1`
+        else
+	        assimp_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "assimp" 2>&1`
+        fi
+	# Put the nasty error message in config.log where it belongs
+	echo "$assimp_PKG_ERRORS" >&5
+
+	as_fn_error $? "Package requirements (assimp) were not met:
+
+$assimp_PKG_ERRORS
+
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
+
+Alternatively, you may set the environment variables assimp_CPPFLAGS
+and assimp_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details." "$LINENO" 5
+elif test $pkg_failed = untried; then
+     	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+	{ { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+as_fn_error $? "The pkg-config script could not be found or is too old.  Make sure it
+is in your PATH or set the PKG_CONFIG environment variable to the full
+path to pkg-config.
+
+Alternatively, you may set the environment variables assimp_CPPFLAGS
+and assimp_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+See \`config.log' for more details" "$LINENO" 5; }
+else
+	assimp_CPPFLAGS=$pkg_cv_assimp_CPPFLAGS
+	assimp_LDFLAGS=$pkg_cv_assimp_LDFLAGS
+	assimp_LIBS=$pkg_cv_assimp_LIBS
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+$as_echo "yes" >&6; }
 
 
 
+
+fi
 
 
 cat >confcache <<\_ACEOF

@@ -18,16 +18,6 @@ AX_ENABLE_DEFAULT_PKGCONFIGDIR([pkgconfigdir],["${libdir}/pkgconfig"])
 AX_CREATE_PKGCONFIG_INFO([src/glassimp.pc],[assimp])
 
 # Look for the assimp library itself:
-if ! `${PKG_CONFIG} --exists assimp`; then
-AC_MSG_ERROR([cannot find assimp library in PKG_CONFIG_PATH])
-fi
-
-assimp_CPPFLAGS=`pkg-config --cflags assimp`
-assimp_LDFLAGS=`pkg-config --libs-only-L assimp`
-assimp_LIBS=`pkg-config --libs-only-l assimp`
-
-AC_SUBST([assimp_CPPFLAGS])
-AC_SUBST([assimp_LDFLAGS])
-AC_SUBST([assimp_LIBS])
+AC_EXTPKG([assimp],[assimp])
 
 AC_OUTPUT
