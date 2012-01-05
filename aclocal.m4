@@ -1109,6 +1109,9 @@ AC_SUBST([am__tar])
 AC_SUBST([am__untar])
 ]) # _AM_PROG_TAR
 
+m4_include([m4/ax_create_pkgconfig_info.m4])
+m4_include([m4/ax_expand_prefix.m4])
+m4_include([m4/ax_warning_default_pkgconfig.m4])
 m4_include([m4/libtool.m4])
 m4_include([m4/ltoptions.m4])
 m4_include([m4/ltsugar.m4])

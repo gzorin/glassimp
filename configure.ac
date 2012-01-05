@@ -10,10 +10,14 @@ AC_CONFIG_FILES(
 
 AC_PROG_CXX
 AC_PROG_LIBTOOL
-
-AC_LANG([C++])
 PKG_PROG_PKG_CONFIG
 
+AC_LANG([C++])
+
+AX_ENABLE_DEFAULT_PKGCONFIGDIR([pkgconfigdir],["${libdir}/pkgconfig"])
+AX_CREATE_PKGCONFIG_INFO([src/glassimp.pc],[assimp])
+
+# Look for the assimp library itself:
 if ! `${PKG_CONFIG} --exists assimp`; then
 AC_MSG_ERROR([cannot find assimp library in PKG_CONFIG_PATH])
 fi
